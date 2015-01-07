@@ -1,9 +1,18 @@
-/* Replace "dll.h" with the name of your header */
-#include "dll.h"
+//JH@KrappLab 
+//2015-01-07
+
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+extern "C" 
+{
+    __declspec( dllexport ) void HelloWorld ();
+    __declspec( dllexport ) int Hexagonization(double* ptr, int row, int col, int e);
+}
+
+//-------- Start of Code -------------
 
 __declspec( dllexport ) void Credit ()
 {
@@ -16,14 +25,11 @@ __declspec( dllexport ) int Hexagonization(double* ptr, int row, int col, int e)
     
     //int e = 15;
     int h, w;
-    h = round(e/2);
-    w = round(e*sqrt(3)/2);
+    h = int(round(e/2));
+    w = int(round(e*sqrt(3)/2));
     
-
-
     int u,v;
 
-    
     u=0;v=0;
     double omma_data, omma_sum, omma_len;
     
@@ -117,7 +123,6 @@ __declspec( dllexport ) int Hexagonization(double* ptr, int row, int col, int e)
     //================================================== end_of_scan
         }
     }
-    
     
     return 0;
 }
